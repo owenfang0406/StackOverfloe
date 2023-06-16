@@ -1,27 +1,25 @@
 import { View, Text, StyleSheet } from "react-native"
 import React from "react"
-import questions from "../../Data/Question.json"
-const Questions = questions.questions[1]
 
-export default function QuestionListItem() {
+export default function QuestionListItem({ Question }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        {Questions.score} votes • 2 {Questions.answer_count} •{" "}
-        {Questions.view_count} views
+        {Question.score} votes • 2 {Question.answer_count} •{" "}
+        {Question.view_count} views
       </Text>
-      <Text style={styles.title}>{Questions.title}</Text>
+      <Text style={styles.title}>{Question.title}</Text>
       <Text numberOfLines={2} style={styles.body}>
-        {Questions.body_markdown}
+        {Question.body_markdown}
       </Text>
       <View style={styles.tags}>
-        {Questions.tags.map((tag) => (
+        {Question.tags.map((tag) => (
           <Text style={styles.tag} key={tag}>
             {tag}
           </Text>
         ))}
         <Text style={styles.time}>
-          asked {new Date(Questions.creation_date).toDateString()}
+          asked {new Date(Question.creation_date).toDateString()}
         </Text>
       </View>
     </View>
